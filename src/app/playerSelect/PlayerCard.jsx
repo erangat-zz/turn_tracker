@@ -7,8 +7,6 @@ class PlayerCard extends Component {
   constructor(props) {
     super(props);
 
-    console.log("ctor props");
-    console.log(this.props);
     this.state = {
       displayPicker: false,
       color: this.props.color,
@@ -42,8 +40,6 @@ class PlayerCard extends Component {
   }
 
   render() {
-    console.log("Name:" + this.state.name);
-    console.log("Name props:" + this.props.name);
     return (
       <div className="PlayerCard">
         <div className="PlayerCard-info-container">

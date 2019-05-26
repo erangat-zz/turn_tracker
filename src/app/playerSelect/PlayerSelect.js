@@ -29,10 +29,7 @@ class PlayerSelect extends Component {
   };
 
   removePlayer = id => {
-    console.log(this.state.players);
-    console.log(id);
     let players = this.state.players.filter(player => player.id !== id);
-    console.log(players);
 
     this.setState({
       players: players
@@ -52,9 +49,6 @@ class PlayerSelect extends Component {
   };
 
   render() {
-    console.log("rendering...");
-    console.log(this.state.players);
-
     let players = this.state.players;
 
     return (
