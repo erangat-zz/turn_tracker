@@ -15,12 +15,28 @@
   display: flex;
   flex: 1;
   padding: 10px;
+  position: relative;
 }
 
 .PlayerCard-color {
   width: 40px;
 }
 
+.PlayerCard-popover {
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.PlayerCard-cover {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
 .PlayerCard-name {
   background-color: $backgroundColor;
   max-width: 480px;
