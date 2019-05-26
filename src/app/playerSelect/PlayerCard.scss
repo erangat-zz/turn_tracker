@@ -43,6 +43,15 @@
   flex: 1;
 }
 
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 0;
+  background-color: $backgroundColor;
+}
+
 .PlayerCard-picture {
   background-color: $backgroundColor;
   max-width: 480px;

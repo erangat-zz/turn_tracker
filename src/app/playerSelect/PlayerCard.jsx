@@ -4,10 +4,20 @@ import { TwitterPicker } from "react-color";
 import "./PlayerCard.scss";
 
 class PlayerCard extends Component {
-  state = {
-    displayPicker: false,
-    color: this.props.color
-  };
+  constructor(props) {
+    super(props);
+
+    console.log("ctor props");
+    console.log(this.props);
+    this.state = {
+      displayPicker: false,
+      color: this.props.color,
+      name: this.props.name
+    };
+
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleClick = () => {
     this.setState({ displayPicker: !this.state.displayPicker });
@@ -18,10 +28,22 @@ class PlayerCard extends Component {
   };
 
   handleChange = color => {
-    this.setState({ color: color.hex });
+    this.setState({ color: color.hex, displayPicker: false });
   };
 
+  handleNameChange(event) {
+    this.props.onNameChange(this.props.id, event.target.value);
+    this.setState({ name: event.target.value });
+  }
+
+  handleSubmit(event) {
+    this.refs.inputRef.blur();
+    event.preventDefault();
+  }
+
   render() {
+    console.log("Name:" + this.state.name);
+    console.log("Name props:" + this.props.name);
     return (
       <div className="PlayerCard">
         <div className="PlayerCard-info-container">
@@ -35,10 +57,17 @@ class PlayerCard extends Component {
             <p> Pic </p>
           </div>
           <div className="PlayerCard-name">
-            <p> {this.props.name} </p>
+            <form onSubmit={this.handleSubmit}>
+              <input
+                ref="inputRef"
+                type="text"
+                value={this.props.name}
+                onChange={this.handleNameChange}
+              />
+            </form>
           </div>
           <div className="PlayerCard-remove">
-            <p> Remove </p>
+            <p onClick={() => this.props.onRemove(this.props.id)}> Remove </p>
           </div>
         </div>
         <div

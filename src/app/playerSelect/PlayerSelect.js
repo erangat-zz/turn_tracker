@@ -5,12 +5,72 @@ import PlayerCard from "./PlayerCard";
 import "./PlayerCard.scss";
 
 class PlayerSelect extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playersAdded: 0,
+      players: []
+    };
+  }
+
+  addPlayer = () => {
+    let playersAdded = this.state.playersAdded + 1;
+    this.setState({
+      playersAdded: playersAdded,
+      players: [
+        ...this.state.players,
+        {
+          name: "Player " + playersAdded,
+          color: "#111111",
+          id: playersAdded
+        }
+      ]
+    });
+  };
+
+  removePlayer = id => {
+    console.log(this.state.players);
+    console.log(id);
+    let players = this.state.players.filter(player => player.id !== id);
+    console.log(players);
+
+    this.setState({
+      players: players
+    });
+  };
+
+  changePlayerName = (id, name) => {
+    this.setState({
+      players: this.state.players.map(player => {
+        if (player.id === id) {
+          return { ...player, name: name };
+        }
+
+        return player;
+      })
+    });
+  };
+
   render() {
+    console.log("rendering...");
+    console.log(this.state.players);
+
+    let players = this.state.players;
+
     return (
       <div className="playerSelect">
         <h1> Player Select </h1>
-        <PlayerCard name="Player 1" color="#ff0000" />
-        <PlayerCard name="Player 2" color="#00ff00" />
+        {players.map((player, index) => (
+          <PlayerCard
+            name={player.name}
+            color={player.color}
+            id={player.id}
+            key={index}
+            onRemove={this.removePlayer}
+            onNameChange={this.changePlayerName}
+          />
+        ))}
+        <button onClick={this.addPlayer}>Add</button>
         <p>
           <Link to="/game">Start</Link>
         </p>
