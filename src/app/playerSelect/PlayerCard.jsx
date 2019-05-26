@@ -55,6 +55,7 @@ class PlayerCard extends Component {
           <div className="PlayerCard-name">
             <form onSubmit={this.handleSubmit}>
               <input
+                placeholder={"Player" + this.props.id}
                 ref="inputRef"
                 type="text"
                 value={this.props.name}

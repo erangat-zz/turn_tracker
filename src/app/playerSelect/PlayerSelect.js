@@ -20,7 +20,7 @@ class PlayerSelect extends Component {
       players: [
         ...this.state.players,
         {
-          name: "Player " + playersAdded,
+          name: "",
           color: "#111111",
           id: playersAdded
         }
