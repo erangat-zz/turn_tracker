@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 import PlayerCard from "./PlayerCard";
 import "./PlayerCard.scss";
@@ -65,9 +64,7 @@ class PlayerSelect extends Component {
           />
         ))}
         <button onClick={this.addPlayer}>Add</button>
-        <p>
-          <Link to="/game">Start</Link>
-        </p>
+        <p onClick={() => this.props.onNext()}>Start</p>
       </div>
     );
   }
