@@ -4,7 +4,6 @@ import { TwitterPicker } from "react-color";
 import "./PlayerCard.scss";
 
 function PlayerCard(props) {
-  console.log(props);
   const [displayPicker, setDisplayPicker] = useState(false);
   const [color, setColor] = useState(props.color);
   const [name, setName] = useState(props.name);
@@ -29,13 +28,11 @@ function PlayerCard(props) {
   };
 
   const handleNameChange = event => {
-    console.log("handlenamechange  " + event.target.value);
     setName(event.target.value);
   };
 
   useEffect(
     () => {
-      console.log("useEffect " + name);
       props.onNameChange(name);
     },
     [name]

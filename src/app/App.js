@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import "./App.scss";
 
 import TurnTracker from "./components/turnTracker/TurnTracker";
+import StateProvider from "./state/stateProvider";
+import { playerReducer, initialState } from "./reducers/playerReducer";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="app">
-        <div className="app-container">
+const App = () => {
+  return (
+    <div className="app">
+      <div className="app-container">
+        <StateProvider initialState={initialState} reducer={playerReducer}>
           <TurnTracker />
-        </div>
+        </StateProvider>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;

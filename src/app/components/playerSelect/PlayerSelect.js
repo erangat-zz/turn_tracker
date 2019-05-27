@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from "react";
+import { useStateValue } from "../../state/stateProvider";
 
 import PlayerCard from "./PlayerCard";
 import "./PlayerCard.scss";
@@ -7,17 +8,14 @@ import {
   ADD_PLAYER,
   REMOVE_PLAYER,
   RENAME_PLAYER
-} from "./playerReducer";
+} from "../../reducers/playerReducer";
 
 const changePlayerName = (id, name) => {
   return;
 };
 
 function PlayerSelect(props) {
-  let [state, dispatch] = useReducer(playerReducer, {
-    playersAdded: 0,
-    players: []
-  });
+  let [state, dispatch] = useStateValue();
 
   let players = state.players;
 

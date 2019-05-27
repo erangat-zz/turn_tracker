@@ -1,6 +1,10 @@
 export const ADD_PLAYER = "ADD_PLAYER";
 export const REMOVE_PLAYER = "REMOVE_PLAYER";
 export const RENAME_PLAYER = "RENAME_PLAYER";
+export const initialState = {
+  playersAdded: 0,
+  players: []
+};
 
 const addPlayer = state => {
   const playersAdded = state.playersAdded + 1;
