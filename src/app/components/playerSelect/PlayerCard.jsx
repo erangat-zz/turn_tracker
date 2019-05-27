@@ -1,80 +1,80 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { TwitterPicker } from "react-color";
 
 import "./PlayerCard.scss";
 
-class PlayerCard extends Component {
-  constructor(props) {
-    super(props);
+function PlayerCard(props) {
+  console.log(props);
+  const [displayPicker, setDisplayPicker] = useState(false);
+  const [color, setColor] = useState(props.color);
+  const [name, setName] = useState(props.name);
+  const nameRef = useRef(null);
 
-    this.state = {
-      displayPicker: false,
-      color: this.props.color,
-      name: this.props.name
-    };
-
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleClick = () => {
-    this.setState({ displayPicker: !this.state.displayPicker });
+  const handleClick = () => {
+    setDisplayPicker(!displayPicker);
   };
 
-  handleClose = () => {
-    this.setState({ displayPicker: false });
+  const handleClose = () => {
+    setDisplayPicker(false);
   };
 
-  handleChange = color => {
-    this.setState({ color: color.hex, displayPicker: false });
+  const handleChange = color => {
+    setColor(color.hex);
+    setDisplayPicker(false);
   };
 
-  handleNameChange(event) {
-    this.props.onNameChange(this.props.id, event.target.value);
-    this.setState({ name: event.target.value });
-  }
-
-  handleSubmit(event) {
-    this.refs.inputRef.blur();
+  const handleSubmit = event => {
+    nameRef.current.blur();
     event.preventDefault();
-  }
+  };
 
-  render() {
-    return (
-      <div className="PlayerCard">
-        <div className="PlayerCard-info-container">
-          {this.state.displayPicker ? (
-            <div className="PlayerCard-popover">
-              <div className="PlayerCard-cover" onClick={this.handleClose} />
-              <TwitterPicker onChange={this.handleChange} triangle="hide" />
-            </div>
-          ) : null}
-          <div className="PlayerCard-picture">
-            <p> Pic </p>
+  const handleNameChange = event => {
+    console.log("handlenamechange  " + event.target.value);
+    setName(event.target.value);
+  };
+
+  useEffect(
+    () => {
+      console.log("useEffect " + name);
+      props.onNameChange(name);
+    },
+    [name]
+  );
+
+  return (
+    <div className="PlayerCard">
+      <div className="PlayerCard-info-container">
+        {displayPicker ? (
+          <div className="PlayerCard-popover">
+            <div className="PlayerCard-cover" onClick={handleClose} />
+            <TwitterPicker onChange={handleChange} triangle="hide" />
           </div>
-          <div className="PlayerCard-name">
-            <form onSubmit={this.handleSubmit}>
-              <input
-                placeholder={"Player" + this.props.id}
-                ref="inputRef"
-                type="text"
-                value={this.props.name}
-                onChange={this.handleNameChange}
-              />
-            </form>
-          </div>
-          <div className="PlayerCard-remove">
-            <p onClick={() => this.props.onRemove(this.props.id)}> Remove </p>
-          </div>
+        ) : null}
+        <div className="PlayerCard-picture">
+          <p> Pic </p>
         </div>
-        <div
-          className="PlayerCard-color"
-          style={{ backgroundColor: this.state.color }}
-          onClick={this.handleClick}
-        />
+        <div className="PlayerCard-name">
+          <form onSubmit={handleSubmit}>
+            <input
+              placeholder={"Player" + props.id}
+              ref={nameRef}
+              type="text"
+              value={props.name}
+              onChange={handleNameChange}
+            />
+          </form>
+        </div>
+        <div className="PlayerCard-remove">
+          <p onClick={() => props.onRemove(props.id)}> Remove </p>
+        </div>
       </div>
-    );
-  }
+      <div
+        className="PlayerCard-color"
+        style={{ backgroundColor: color }}
+        onClick={handleClick}
+      />
+    </div>
+  );
 }
 
 export default PlayerCard;
