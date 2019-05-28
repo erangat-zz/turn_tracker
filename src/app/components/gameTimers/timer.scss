@@ -1,0 +1,23 @@
+@import "../../App.scss";
+
+.timer {
+  text-align: center;
+  background-color: #aaaaaa;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px;
+
+  > h1 {
+    display: flex;
+  }
+
+  > .buttons {
+    display: flex;
+
+    button {
+      margin: 10px;
+    }
+  }
+}

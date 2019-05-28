@@ -8,6 +8,7 @@ function PlayerCard(props) {
   const [color, setColor] = useState(props.color);
   const [name, setName] = useState(props.name);
   const nameRef = useRef(null);
+  const id = props.id;
 
   const handleClick = () => {
     setDisplayPicker(!displayPicker);
@@ -17,9 +18,10 @@ function PlayerCard(props) {
     setDisplayPicker(false);
   };
 
-  const handleChange = color => {
-    setColor(color.hex);
+  const handleChange = newColor => {
+    setColor(newColor.hex);
     setDisplayPicker(false);
+    props.onChange({ name: name, color: newColor, id: id });
   };
 
   const handleSubmit = event => {
@@ -33,9 +35,14 @@ function PlayerCard(props) {
 
   useEffect(
     () => {
-      props.onNameChange(name);
+      let newColor = color;
+      props.onChange({
+        name: name,
+        color: newColor,
+        id: id
+      });
     },
-    [name]
+    [name, color]
   );
 
   return (

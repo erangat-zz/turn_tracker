@@ -7,7 +7,7 @@ import {
   playerReducer,
   ADD_PLAYER,
   REMOVE_PLAYER,
-  RENAME_PLAYER
+  UPDATE_PLAYER
 } from "../../reducers/playerReducer";
 
 const changePlayerName = (id, name) => {
@@ -30,8 +30,12 @@ function PlayerSelect(props) {
           key={index}
           onRemove={() =>
             dispatch({ type: REMOVE_PLAYER, playerId: player.id })}
-          onNameChange={name =>
-            dispatch({ type: RENAME_PLAYER, playerId: player.id, name: name })}
+          onChange={updatedPlayer =>
+            dispatch({
+              type: UPDATE_PLAYER,
+              playerId: player.id,
+              player: updatedPlayer
+            })}
         />
       ))}
       <button onClick={() => dispatch({ type: ADD_PLAYER })}>Add</button>
