@@ -10,11 +10,13 @@ import {
   END_ROUND
 } from "../../reducers/timersReducer";
 
+import { SET_TURNS } from "../../reducers/playerReducer";
+
 import Timer from "./Timer";
 import Round from "./Round";
 
 function GameTimers(props) {
-  let [globalState] = useStateValue();
+  let [globalState, globalDispatch] = useStateValue();
   let { players } = globalState;
 
   const [state, dispatch] = useReducer(timersReducer, initialState(players));
@@ -30,6 +32,17 @@ function GameTimers(props) {
     [state.isPaused, state.isEndOfRound]
   );
 
+  const onEndGame = () => {
+    console.log("onEndGame");
+    console.log(state);
+
+    globalDispatch({
+      type: SET_TURNS,
+      turns: state.turns
+    });
+    props.onNext();
+  };
+
   return (
     <React.Fragment>
       <h1>Game in Progress</h1>
@@ -41,7 +54,7 @@ function GameTimers(props) {
               dispatch({
                 type: START_ROUND
               })}
-            onEndGame={() => props.onNext()}
+            onEndGame={onEndGame}
           />
         ) : (
           <React.Fragment>

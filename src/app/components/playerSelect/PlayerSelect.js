@@ -1,18 +1,13 @@
-import React, { useState, useReducer } from "react";
+import React from "react";
 import { useStateValue } from "../../state/stateProvider";
 
 import PlayerCard from "./PlayerCard";
 import "./PlayerCard.scss";
 import {
-  playerReducer,
   ADD_PLAYER,
   REMOVE_PLAYER,
   UPDATE_PLAYER
 } from "../../reducers/playerReducer";
-
-const changePlayerName = (id, name) => {
-  return;
-};
 
 function PlayerSelect(props) {
   let [state, dispatch] = useStateValue();

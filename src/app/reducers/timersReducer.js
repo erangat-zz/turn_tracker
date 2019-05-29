@@ -9,6 +9,7 @@ export const UPDATE_PLAYER = "UPDATE_PLAYER";
 export const initialState = players => {
   return {
     activeTimer: 0,
+    activeTicks: 0,
     timers: players.map((player, index) => ({
       name: player.name,
       color: player.color,
@@ -17,9 +18,12 @@ export const initialState = players => {
     isPaused: true,
     endRoundTimer: 0,
     roundNumber: 1,
-    isEndOfRound: true
+    isEndOfRound: true,
+    isFirstPlayOfRound: true,
+    turns: []
   };
 };
+
 const startRound = state => {
   return { ...state, isEndOfRound: false };
 };
@@ -29,22 +33,50 @@ const endRound = state => {
     ...state,
     roundNumber: state.roundNumber + 1,
     isEndOfRound: true,
-    isPaused: true
+    isPaused: true,
+    turns: [...state.turns, createTurn(state)],
+    activeTicks: 0,
+    isFirstPlayOfRound: true
   };
 };
 
 const makeTimerActive = (timerId, state) => {
+  if (timerId === state.activeTimer || state.isFirstPlayOfRound) {
+    return {
+      ...state,
+      activeTimer: timerId,
+      isPaused: false,
+      isFirstPlayOfRound: false
+    };
+  }
+
   return {
     ...state,
     activeTimer: timerId,
-    isPaused: false
+    isPaused: false,
+    turns: [...state.turns, createTurn(state)],
+    activeTicks: 0
+  };
+};
+
+const createTurn = state => {
+  return {
+    name: state.timers[state.activeTimer].name,
+    duration: state.activeTicks,
+    round: state.roundNumber
   };
 };
 
 const nextTimer = state => {
   const numberOfTimers = state.timers.length;
   const nextTimer = state.activeTimer + 1 % numberOfTimers;
-  return { ...state, activeTimer: nextTimer };
+
+  return {
+    ...state,
+    activeTimer: nextTimer,
+    turns: [...state.turns, createTurn(state)],
+    activeTicks: 0
+  };
 };
 
 const pauseTimer = state => {
@@ -61,7 +93,8 @@ const tickTimer = state => {
 
   return {
     ...state,
-    timers: updatedTimers
+    timers: updatedTimers,
+    activeTicks: state.activeTicks + 1
   };
 };
 

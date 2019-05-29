@@ -1,6 +1,7 @@
 export const ADD_PLAYER = "ADD_PLAYER";
 export const REMOVE_PLAYER = "REMOVE_PLAYER";
 export const UPDATE_PLAYER = "UPDATE_PLAYER";
+export const SET_TURNS = "SET_TURNS";
 
 export const initialState = {
   playersAdded: 2,
@@ -15,7 +16,19 @@ export const initialState = {
       color: "#00FF00",
       id: 2
     }
-  ]
+  ],
+  turns: []
+};
+
+const setTurns = (turns, state) => {
+  console.log("setTurns");
+  console.log(state);
+  console.log(turns);
+
+  return {
+    ...state,
+    turns: turns
+  };
 };
 
 const addPlayer = state => {
@@ -56,7 +69,9 @@ const removePlayer = (id, state) => {
 };
 
 export const playerReducer = (state, action) => {
-  console.log(action);
+  console.log(action.type);
+  console.log(state);
+
   switch (action.type) {
     case ADD_PLAYER:
       return addPlayer(state);
@@ -64,6 +79,8 @@ export const playerReducer = (state, action) => {
       return removePlayer(action.playerId, state);
     case UPDATE_PLAYER:
       return updatePlayer(action.playerId, action.player, state);
+    case SET_TURNS:
+      return setTurns(action.turns, state);
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.scss";
 
 import TurnTracker from "./components/turnTracker/TurnTracker";

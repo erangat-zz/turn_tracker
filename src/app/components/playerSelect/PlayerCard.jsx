@@ -8,7 +8,7 @@ function PlayerCard(props) {
   const [color, setColor] = useState(props.color);
   const [name, setName] = useState(props.name);
   const nameRef = useRef(null);
-  const id = props.id;
+  const { id, onChange } = props;
 
   const handleClick = () => {
     setDisplayPicker(!displayPicker);
@@ -36,11 +36,7 @@ function PlayerCard(props) {
   useEffect(
     () => {
       let newColor = color;
-      props.onChange({
-        name: name,
-        color: newColor,
-        id: id
-      });
+      onChange({ name: name, color: newColor, id: id });
     },
     [name, color]
   );
