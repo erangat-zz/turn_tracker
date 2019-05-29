@@ -4,7 +4,7 @@ function Timer(props) {
   return (
     <div className="timer" style={{ backgroundColor: props.color }}>
       <h1>
-        Id:{props.id} - {props.ticks}
+        {props.name} - {props.ticks}
       </h1>
       <div className="buttons">
         <button onClick={() => props.onStart()}> Start</button>

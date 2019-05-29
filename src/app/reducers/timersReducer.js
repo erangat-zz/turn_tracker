@@ -2,16 +2,35 @@ export const MAKE_TIMER_ACTIVE = "MAKE_TIMER_ACTIVE";
 export const NEXT_TIMER = "NEXT_TIMER";
 export const PAUSE_TIMER = "PAUSE_TIMER";
 export const TIMER_TICK = "TIMER_TICK";
-
-export const REMOVE_PLAYER = "REMOVE_PLAYER";
+export const END_ROUND = "END_ROUND";
+export const START_ROUND = "START_ROUND";
 export const UPDATE_PLAYER = "UPDATE_PLAYER";
 
-export const initialState = {
-  activeTimer: 0,
-  timers: [],
-  isPaused: false,
-  endRoundTimer: 0,
-  isEndOfRound: false
+export const initialState = players => {
+  return {
+    activeTimer: 0,
+    timers: players.map((player, index) => ({
+      name: player.name,
+      color: player.color,
+      ticks: 0
+    })),
+    isPaused: true,
+    endRoundTimer: 0,
+    roundNumber: 1,
+    isEndOfRound: true
+  };
+};
+const startRound = state => {
+  return { ...state, isEndOfRound: false };
+};
+
+const endRound = state => {
+  return {
+    ...state,
+    roundNumber: state.roundNumber + 1,
+    isEndOfRound: true,
+    isPaused: true
+  };
 };
 
 const makeTimerActive = (timerId, state) => {
@@ -59,12 +78,6 @@ const updatePlayer = (id, updatedPlayer, state) => {
   };
 };
 
-const removePlayer = (id, state) => {
-  let players = state.players.filter(player => player.id !== id);
-
-  return { ...state, players: players };
-};
-
 export const timersReducer = (state, action) => {
   switch (action.type) {
     case MAKE_TIMER_ACTIVE:
@@ -77,6 +90,10 @@ export const timersReducer = (state, action) => {
       return tickTimer(state);
     case UPDATE_PLAYER:
       return updatePlayer(action.playerId, action.player, state);
+    case START_ROUND:
+      return startRound(state);
+    case END_ROUND:
+      return endRound(state);
     default:
       return state;
   }

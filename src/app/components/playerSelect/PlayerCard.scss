@@ -1,5 +1,12 @@
 @import "../../App.scss";
 
+.playerSelect {
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+}
+
 .PlayerCard {
   text-align: center;
   background-color: #aaaaaa;
@@ -62,4 +69,18 @@ input[type="text"] {
   background-color: $backgroundColor;
   max-width: 480px;
   flex: 1;
+}
+
+.btn-bottom-big {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #aaaaaa;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  right: 10px;
+  margin: 10px auto;
 }

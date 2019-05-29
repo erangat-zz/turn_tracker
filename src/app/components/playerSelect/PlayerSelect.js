@@ -39,7 +39,9 @@ function PlayerSelect(props) {
         />
       ))}
       <button onClick={() => dispatch({ type: ADD_PLAYER })}>Add</button>
-      <p onClick={() => props.onNext()}>Start</p>
+      <div className="btn-bottom-big" onClick={() => props.onNext()}>
+        Start
+      </div>
     </div>
   );
 }
