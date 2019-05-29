@@ -16,9 +16,7 @@ export const ticksToTime = ticks => {
     ":" +
     valueToDoubleDigits(minutes) +
     ":" +
-    valueToDoubleDigits(seconds) +
-    ":" +
-    miliSeconds
+    valueToDoubleDigits(seconds)
   );
 };
 

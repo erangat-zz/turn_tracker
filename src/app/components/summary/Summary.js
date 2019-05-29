@@ -16,7 +16,7 @@ function groupBy(list, keyGetter) {
   return map;
 }
 
-const avg = arr => arr.reduce((p, c) => p + c, 0) / arr.length;
+const avg = arr => Math.floor(arr.reduce((p, c) => p + c, 0) / arr.length);
 
 const calculateAverages = turnsWithRounds => {
   let averages = [];
