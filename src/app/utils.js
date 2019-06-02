@@ -16,7 +16,9 @@ export const ticksToTime = ticks => {
     ":" +
     valueToDoubleDigits(minutes) +
     ":" +
-    valueToDoubleDigits(seconds)
+    valueToDoubleDigits(seconds) +
+    "." +
+    miliSeconds
   );
 };
 
@@ -27,5 +29,5 @@ export const ticksToShortTime = ticks => {
   const seconds = totalSeconds % 60;
   const minutes = Math.floor(totalSeconds / 60);
 
-  return minutes + ":" + valueToDoubleDigits(seconds) + ":" + miliSeconds;
+  return minutes + ":" + valueToDoubleDigits(seconds) + "." + miliSeconds;
 };

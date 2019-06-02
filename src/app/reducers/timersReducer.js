@@ -25,7 +25,12 @@ export const initialState = players => {
 };
 
 const startRound = state => {
-  return { ...state, isEndOfRound: false };
+  return {
+    ...state,
+    isEndOfRound: false,
+    turns: [...state.turns, createTurn(state)],
+    activeTicks: 0
+  };
 };
 
 const endRound = state => {
@@ -35,7 +40,7 @@ const endRound = state => {
     isEndOfRound: true,
     isPaused: true,
     turns: [...state.turns, createTurn(state)],
-    activeTicks: 0,
+    endRoundTimer: 0,
     isFirstPlayOfRound: true
   };
 };
@@ -61,8 +66,8 @@ const makeTimerActive = (timerId, state) => {
 
 const createTurn = state => {
   return {
-    name: state.timers[state.activeTimer].name,
-    duration: state.activeTicks,
+    name: state.isEndOfRound ? "Setup" : state.timers[state.activeTimer].name,
+    duration: state.isEndOfRound ? state.endRoundTimer : state.activeTicks,
     round: state.roundNumber
   };
 };

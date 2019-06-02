@@ -50,6 +50,7 @@ function GameTimers(props) {
         {state.isEndOfRound ? (
           <Round
             roundNumber={state.roundNumber}
+            roundTimer={state.endRoundTimer}
             onStart={() =>
               dispatch({
                 type: START_ROUND
