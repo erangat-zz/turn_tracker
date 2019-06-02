@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/turn_tracker/static/css/main.0c77eac7.chunk.css",
-    "main.js": "/turn_tracker/static/js/main.7fe71431.chunk.js",
-    "main.js.map": "/turn_tracker/static/js/main.7fe71431.chunk.js.map",
+    "main.js": "/turn_tracker/static/js/main.d38efe59.chunk.js",
+    "main.js.map": "/turn_tracker/static/js/main.d38efe59.chunk.js.map",
     "runtime~main.js": "/turn_tracker/static/js/runtime~main.5a33e557.js",
     "runtime~main.js.map": "/turn_tracker/static/js/runtime~main.5a33e557.js.map",
-    "static/js/2.737b7c9b.chunk.js": "/turn_tracker/static/js/2.737b7c9b.chunk.js",
-    "static/js/2.737b7c9b.chunk.js.map": "/turn_tracker/static/js/2.737b7c9b.chunk.js.map",
+    "static/js/2.d2a1520d.chunk.js": "/turn_tracker/static/js/2.d2a1520d.chunk.js",
+    "static/js/2.d2a1520d.chunk.js.map": "/turn_tracker/static/js/2.d2a1520d.chunk.js.map",
     "index.html": "/turn_tracker/index.html",
-    "precache-manifest.9fe0079d1d97694bd85f301d4f00deb0.js": "/turn_tracker/precache-manifest.9fe0079d1d97694bd85f301d4f00deb0.js",
+    "precache-manifest.e26d4fc4ed9a35c9f892602b4f58fcba.js": "/turn_tracker/precache-manifest.e26d4fc4ed9a35c9f892602b4f58fcba.js",
     "service-worker.js": "/turn_tracker/service-worker.js",
     "static/css/main.0c77eac7.chunk.css.map": "/turn_tracker/static/css/main.0c77eac7.chunk.css.map"
   }
