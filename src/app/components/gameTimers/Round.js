@@ -8,8 +8,14 @@ function Round(props) {
       <h1> Round {props.roundNumber}</h1>
       <h2>{ticksToTime(props.roundTimer)}</h2>
       <div className="buttons">
-        <button onClick={() => props.onStart()}> Start Round</button>
-        <button onClick={() => props.onEndGame()}> End Game</button>
+        <div className="btn" onClick={() => props.onStart()}>
+          {" "}
+          Start Round
+        </div>
+        <div className="btn" onClick={() => props.onEndGame()}>
+          {" "}
+          End Game
+        </div>
       </div>
     </div>
   );

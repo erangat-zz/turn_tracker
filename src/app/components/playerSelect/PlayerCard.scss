@@ -1,86 +1,91 @@
 @import "../../App.scss";
 
 .playerSelect {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   flex: 1;
   position: relative;
 }
 
-.PlayerCard {
+.playerCard {
   text-align: center;
-  background-color: #aaaaaa;
+  background-color: #ddd;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 10px;
-}
+  margin: 7px 10px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0px 10px 6px -6px #777;
 
-.PlayerCard-info-container {
-  background-color: "yellow";
-  max-width: 480px;
-  display: flex;
-  flex: 1;
-  padding: 10px;
-  position: relative;
-}
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 
-.PlayerCard-color {
-  width: 40px;
-}
+  &-info-container {
+    max-width: 480px;
+    max-height: 60px;
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    position: relative;
+  }
 
-.PlayerCard-popover {
-  position: absolute;
-  z-index: 2;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
-}
+  &-color {
+    width: 40px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
 
-.PlayerCard-cover {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
-.PlayerCard-name {
-  background-color: $backgroundColor;
-  max-width: 480px;
-  flex: 1;
-}
+  &-popover {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+  }
 
-input[type="text"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 0;
-  background-color: $backgroundColor;
-}
+  &-cover {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
 
-.PlayerCard-picture {
-  background-color: $backgroundColor;
-  max-width: 480px;
-  flex: 1;
-}
+  &-name {
+    max-width: 480px;
+    flex: 1;
+  }
 
-.PlayerCard-remove {
-  background-color: $backgroundColor;
-  max-width: 480px;
-  flex: 1;
-}
+  &-picture {
+    max-width: 480px;
+    flex: 1;
+  }
 
-.btn-bottom-big {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  background-color: #aaaaaa;
-  height: 50px;
-  position: absolute;
-  bottom: 0px;
-  left: 10px;
-  right: 10px;
-  margin: 10px auto;
+  &-remove {
+    max-width: 480px;
+    align-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+
+    i {
+      margin: 0.8rem;
+    }
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.1rem;
+  }
 }

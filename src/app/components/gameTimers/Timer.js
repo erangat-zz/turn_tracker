@@ -9,8 +9,8 @@ function Timer(props) {
         {props.name} - {ticksToTime(props.ticks)}
       </h2>
       <div className="buttons">
-        <button onClick={() => props.onStart()}> Start</button>
-        <button onClick={() => props.onPause()}> Pause</button>
+        <i className="fa fa-play-circle-o" onClick={() => props.onStart()} />
+        <i className="fa fa-pause-circle-o" onClick={() => props.onPause()} />
       </div>
     </div>
   );

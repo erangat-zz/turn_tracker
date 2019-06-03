@@ -85,7 +85,7 @@ function GameTimers(props) {
                   type: END_ROUND
                 })}
             >
-              EndRound
+              End Round
             </p>
           </React.Fragment>
         )}

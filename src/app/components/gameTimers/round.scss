@@ -2,7 +2,7 @@
 
 .round {
   text-align: center;
-  background-color: #aaaaaa;
+  background-color: #dddddd;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -17,8 +17,10 @@
   > .buttons {
     display: flex;
 
+    flex: 1;
+    width: 100%;
     button {
-      margin: 10px;
+      margin: 5px;
     }
   }
 }

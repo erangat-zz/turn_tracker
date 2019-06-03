@@ -42,18 +42,22 @@ function PlayerCard(props) {
   );
 
   return (
-    <div className="PlayerCard">
-      <div className="PlayerCard-info-container">
+    <div className="playerCard">
+      <div className="playerCard-info-container">
         {displayPicker ? (
-          <div className="PlayerCard-popover">
-            <div className="PlayerCard-cover" onClick={handleClose} />
+          <div className="playerCard-popover">
+            <div className="playerCard-cover" onClick={handleClose} />
             <TwitterPicker onChange={handleChange} triangle="hide" />
           </div>
         ) : null}
-        <div className="PlayerCard-picture">
-          <p> Pic </p>
+        <div className="playerCard-picture">
+          <img
+            className="round-img"
+            src={"http://lorempixel.com/200/200/abstract/" + props.id}
+            alt=""
+          />
         </div>
-        <div className="PlayerCard-name">
+        <div className="playerCard-name">
           <form onSubmit={handleSubmit}>
             <input
               placeholder={"Player" + props.id}
@@ -64,12 +68,15 @@ function PlayerCard(props) {
             />
           </form>
         </div>
-        <div className="PlayerCard-remove">
-          <p onClick={() => props.onRemove(props.id)}> Remove </p>
+        <div className="playerCard-remove">
+          <i
+            className="fa fa-trash-o"
+            onClick={() => props.onRemove(props.id)}
+          />
         </div>
       </div>
       <div
-        className="PlayerCard-color"
+        className="playerCard-color"
         style={{ backgroundColor: color }}
         onClick={handleClick}
       />
