@@ -84,13 +84,14 @@ const Summary = () => {
       <h2> Player Average </h2>
       {averages.map((average, index) => (
         <p key={index}>
-          Player: {average.key} AverageTurn: {ticksToShortTime(average.average)}
+          Player: {average.player} AverageTurn:{" "}
+          {ticksToShortTime(average.average)}
         </p>
       ))}
       <h2>Player totals</h2>
       {playerTotals.map((playerTotal, index) => (
         <p key={index}>
-          Round: {playerTotal.key}, Total: {ticksToTime(playerTotal.total)}
+          Player: {playerTotal.key}, Total: {ticksToTime(playerTotal.total)}
         </p>
       ))}
       <h2>Round totals</h2>

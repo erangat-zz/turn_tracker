@@ -9,11 +9,9 @@ function Round(props) {
       <h2>{ticksToTime(props.roundTimer)}</h2>
       <div className="buttons">
         <div className="btn" onClick={() => props.onStart()}>
-          {" "}
           Start Round
         </div>
         <div className="btn" onClick={() => props.onEndGame()}>
-          {" "}
           End Game
         </div>
       </div>
